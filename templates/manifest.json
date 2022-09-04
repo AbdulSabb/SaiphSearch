@@ -1,0 +1,43 @@
+{
+  "manifest_version": 2,
+  "name": "Saiph",
+  "version": "0.1.0",
+  "description": "The flexible searching tool that gets what you need.",
+  "browser_action": {
+    "default_logo": {
+      "19": "img/logo19.png",
+      "38": "img/logo38.png"
+    },
+    "default_popup": "popup.html"
+  },
+  "icons": { 
+    "16": "/img/logo16.png",
+    "48": "img/logo48.png",
+    "128": "img/logo128.png",
+    "350": "img/logo350.png"
+  },
+  "content_scripts": [ {
+      "matches": [ "<all_urls>", "file://*/*" ],
+      "js": [ "jquery/jquery.js", "jquery/jquery.highlight.js", "lib.js", "content-action.js", "live-copy.js", "server.js", "get-pages-source.js", "hot-reload.js", "background.js"],
+      "css": [ "highlight.css" ]
+   } ],
+  "background": {
+    "scripts": ["jquery/jquery.js", "jquery/jquery.highlight.js", "lib.js", "content-action.js", "live-copy.js", "server.js", "get-pages-source.js", "hot-reload.js", "background.js" ],
+    "persistent": false
+  },
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+L",
+        "mac": "Command+Shift+F",
+        "chromeos": "Ctrl+Shift+F",
+        "linux": "Ctrl+Shift+F"
+      },
+      "description": "Extension activation"
+    }
+  },
+  "permissions": [
+  "activeTab", "http://*/*", "https://*/*", "storage", "contextMenus", "http://localhost:5000/*",  "http://myapp.appspot.com/*", "http://localhost/*", "http://127.0.0.1:5000/*", "http://localhost:80/*"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-inline'; object-src 'self'"
+ }

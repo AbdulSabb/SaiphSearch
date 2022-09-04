@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>PopUp</title>
+    <style>
+        body {
+            background-color: #1e1f21;
+            margin: 0.5em;
+            height: 100px;
+            width: 200px;
+        }
+
+        label {
+            color: #fff;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-left: 0.5em;
+        }
+
+        textarea {
+            background-color: #36373b;
+            color: #fff;
+            font-size: 1.5em;
+            padding: 0.4em;
+            font-weight: 500;
+        }
+
+        textarea:focus {
+            outline: none;
+        }
+
+        .collapsible {
+            color: #FEBD59;
+            cursor: pointer;
+            padding: 1px;
+            width: 200px;
+            border: none;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .active,
+        .collapsible:hover {
+            background-color: #FEBD59;
+        }
+
+        .collapsible:after {
+            width: 200px;
+            content: '\002B';
+            color: #1e1f21;
+            font-weight: bold;
+            float: right;
+        }
+
+        .active:after {
+            width: 200px;
+            content: "\2212";
+        }
+
+        .content {
+            width: 200px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: #36373b;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 30px;
+            height: 17px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 13px;
+            width: 13px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: #FEBD59;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #FEBD59;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(13px);
+            -ms-transform: translateX(13px);
+            transform: translateX(13px);
+        }
+
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+<div id="container" style="padding-bottom: 5px">
+    <div class="textarea-wrap">
+        </div>
+        <textarea id="wordEntry" spellcheck="false" cols="40" rows="1" style="resize: none;" autofocus></textarea>
+        <textarea id="highlightWords" spellcheck="false" cols="40" rows="7"></textarea>
+        <button id="runChange" onclick="server.get_change()">get data</button>
+    </div>
+</div>
+<script src="jquery/jquery.js"></script>
+<script src="jquery/jquery.highlight.js"></script>
+<script src="lib.js"></script>
+<script src="popup.js"></script>
+<script src="live-copy.js"></script>
+<script src="server.js"></script>
+
+
+</body>
+
+</html>
